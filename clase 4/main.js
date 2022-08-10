@@ -19,7 +19,7 @@ function promedio (a){
         a =confirm("queres saver el promedio de otro alumno?");
     }
 
-        alert("gracias por usar estya funcion"); 
+        alert("gracias por usar esta funcion"); 
 
 }
 
