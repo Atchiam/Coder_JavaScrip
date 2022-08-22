@@ -22,9 +22,9 @@ function datos(){
 
     alert (nombre + apellido + email + tel + comida)
 
-    let caca= new User(nombre, apellido, email, tel, comida)
-    alert(caca.nombre)
-    personas.push(caca);
+    let per= new User(nombre, apellido, email, tel, comida)
+    alert(per.nombre)
+    personas.push(per);
     alert(personas.length)
 }
 
