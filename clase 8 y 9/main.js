@@ -10,6 +10,8 @@ class User {
 }
 
 const personas = []
+let sorete= new User("milanga","cakero","kakyro@hotmai.com",1122333,"milanesa")
+personas.push(sorete)
 
 function datos(){
     let nombre   = document.getElementById("nombre").value
@@ -20,7 +22,10 @@ function datos(){
 
     alert (nombre + apellido + email + tel + comida)
 
-    return (personas.push(new User(nombre, apellido, email, tel, comida)));
+    let caca= new User(nombre, apellido, email, tel, comida)
+    alert(caca.nombre)
+    personas.push(caca);
+    alert(personas.length)
 }
 
 function ver(){
@@ -30,19 +35,9 @@ function ver(){
     p.innerHTML = personas.map(e=> "usuario " + e.nombre +" "+ e.apellido)
     
     document.body.append(p)
-    // -----
-    for (const e of personas) {
-        let li= e.map(e=> "usuario " + e.nombre +" "+ e.apellido)
-        
-        li.innerHTML = e
-        
-        document.body.append(li)
-    }
-
-    p.innerHTML = "Lo muestra pero deveria traer los datos ingresados"
 }
 
-console.log(personas)
+console.log(personas.length)
 
 btn= document.getElementById("enviar")
 btn.onclick = () => {datos()}
