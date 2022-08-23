@@ -10,8 +10,8 @@ class User {
 }
 
 const personas = []
-let sorete= new User("milanga","cakero","kakyro@hotmai.com",1122333,"milanesa")
-personas.push(sorete)
+let usuario= new User("milanga","cakero","kakyro@hotmai.com",1122333,"milanesa")
+personas.push (usuario)
 
 function datos(){
     let nombre   = document.getElementById("nombre").value
@@ -23,9 +23,9 @@ function datos(){
     alert (nombre + apellido + email + tel + comida)
 
     let per= new User(nombre, apellido, email, tel, comida)
-    alert(per.nombre)
+    
     personas.push(per);
-    alert(personas.length)
+
 }
 
 function ver(){
