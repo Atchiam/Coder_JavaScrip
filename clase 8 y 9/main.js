@@ -10,7 +10,7 @@ class User {
 }
 
 const personas=[]
-let usuario= new User("milanga","cakero","kakyro@hotmai.com",1122333,"milanesa")
+
 personas.push (usuario)
 
 function datos(e){
