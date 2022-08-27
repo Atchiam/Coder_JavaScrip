@@ -7,10 +7,8 @@ class User {
         this.comida   = comida
     }
 }
-//const personas=[]
-let id = Number(0)
 
-function datos(e, id){
+function datos(e){
     e.preventDefault();
 
     let nombre   = document.getElementById("nombre").value
@@ -25,8 +23,7 @@ function datos(e, id){
 
     enjson = JSON.stringify(per)
 
-    localStorage.setItem(id, enjson)
-
+    localStorage.setItem(0, enjson)
 }
 
 function ver(){
@@ -34,16 +31,14 @@ function ver(){
     let personas = JSON.parse(localStorage.getItem(0))
     let div = document.createElement('div')
     let p = document.createElement('p')
-    p.innerHTML = "usuario " + personas.nombre +" "+ personas.apellido +"e-mail" +personas.email +" "+ "telefono" + personas.tel + " comida a eleccion "+ personas.comida
 
-    // for (let i = 0; i < personas.length; i++) {
-    //     const e = personas[i];
+    for (let i = 0; i < 1; i++) {
+        const e = personas;
         
-    //     let p = document.createElement('p')
-    //     p.innerHTML = "usuario " + e.nombre +" "+ e.apellido +"e-mail" +e.email +" "+ "telefono" + e.tel + " comida a eleccion "+ e.comida
-    
-    //     div.append(p)
-    // }
+        p.innerHTML = "usuario " + e.nombre +" "+ e.apellido +"e-mail" +e.email +" "+ "telefono" + e.tel + " comida a eleccion "+ e.comida
+        
+        div.append(p)
+    }
     div.append(p)
     document.body.append(div)
 }
