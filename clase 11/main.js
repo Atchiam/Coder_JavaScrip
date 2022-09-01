@@ -8,6 +8,8 @@ class User {
     }
 }
 
+localStorage.getItem("personas") ?  personas = JSON.parse(localStorage.getItem("personas")) : personas = []
+
 function datos(e){
     e.preventDefault();
 
@@ -21,25 +23,26 @@ function datos(e){
 
     let per= new User(nombre, apellido, email, tel, comida)
 
-    enjson = JSON.stringify(per)
+    personas.push(per)
 
-    localStorage.setItem(0, enjson)
+    enjson = JSON.stringify(personas)
+
+    localStorage.setItem("personas", enjson)
 }
 
 function ver(){
 
-    let personas = JSON.parse(localStorage.getItem(0))
-    let div = document.createElement('div')
-    let p = document.createElement('p')
+    let borrar = document.getElementsByTagName("div") 
+    borrar.remove()
 
-    for (let i = 0; i < 1; i++) {
-        const e = personas;
+    let div = document.createElement('div');
+
+    for (let i = 0; i < personas.length ; i++) {
+        const e = personas[i];
         
-        p.innerHTML = "usuario " + e.nombre +" "+ e.apellido +"e-mail" +e.email +" "+ "telefono" + e.tel + " comida a eleccion "+ e.comida
-        
-        div.append(p)
+        div.innerHTML += `<p>usuario ${e.nombre} ${e.apellido} e-mail ${e.email} telefono ${e.tel} comida a eleccion ${e.comida}</p>`
     }
-    div.append(p)
+
     document.body.append(div)
 }
 
