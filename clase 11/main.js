@@ -22,7 +22,11 @@ function datos(e){
     let tel      = Number(document.getElementById("tel").value)
     let comida   = document.getElementById("comida").value
 
-    alert ("se guardo con exito")
+//Alerta
+    swal({
+        title:`Guardado con Exito`, 
+        icon: "success"
+});
 
     let per= new User(nombre, apellido, email, tel, comida)
 
@@ -48,7 +52,24 @@ function ver(){
 
 //Borrar Cache
 function borrarCache(){
-    localStorage.clear()
+    let borrar = swal({
+        title:`Seguro que quiere borrar la cache?`, 
+        icon: "info",
+        buttons: {cancelar:{value:"cancelar"}, aceptar:{value:"aceptar"}},
+    });
+    borrar.then((value) => {
+        switch (value) {
+
+        case "aceptar":
+            localStorage.clear()
+            swal("Se elimino la Cache","","success");
+            break;
+
+        case "cancelar":
+            swal("No se elimino la Cache", "", "error");
+            break;
+        }
+    });
 }
 
 //Botones 
@@ -83,3 +104,5 @@ const gato2 = {
 console.log(gato2, gato2.tamano)
 
 console.log(gato)
+
+console.log( null || undefined ) 
