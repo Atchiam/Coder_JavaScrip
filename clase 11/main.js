@@ -55,7 +55,7 @@ function borrarCache(){
     let borrar = swal({
         title:`Seguro que quiere borrar la cache?`, 
         icon: "info",
-        buttons: {cancelar:{value:"cancelar"}, aceptar:{value:"aceptar"}},
+        buttons: {aceptar:{value:"aceptar"}, cancelar:{value:"cancelar"}},
     });
     borrar.then((value) => {
         switch (value) {
@@ -106,3 +106,53 @@ console.log(gato2, gato2.tamano)
 console.log(gato)
 
 console.log( null || undefined ) 
+
+//-------------------------------------------------------------------------------------------
+//clase 14: Fetch Api 
+//---------no anda-------
+    // <li> abilidades:${
+    //     data.abilities.forEach(element => {
+    //         `${element.ability.name}`
+    //     })}
+    // </li>
+//---------si anda-------
+{/* <li>abilidad 1:  ${data.abilities[0].ability.name}</li>
+<li>abilidad 2:  ${data.abilities[1].ability.name}</li> */}
+
+let btn4 = document.getElementById("poke_btn")
+btn4.onclick = () => {
+    let pok= document.getElementById("poke_inp").value
+    poki(`https://pokeapi.co/api/v2/pokemon/${pok}`)
+}
+
+function poki(url){
+    fetch(url)
+        .then((res) => res.json())
+            .then((data) => {
+                const div = document.getElementById("poke_div")
+                const li = document.createElement('div')
+                li.innerHTML=`
+                <img src="${data.sprites.front_default}" style="width: 10rem; margin:1rem 4rem" class="card-img-top" alt="...">
+                <div class="card-body" style="width: 15rem; margin:0rem 1.5rem">
+                    <h5 class="card-title">${data.name}</h5>
+                    <p class="card-text">
+                    <ul>
+                        <li>abilidad 1:  ${data.abilities[0].ability.name}</li>
+                        <li>abilidad 2:  ${data.abilities[1].ability.name}</li>
+                    </ul>
+                    </p>
+                </div>
+                `
+                div.append(li)
+            })
+    
+        .catch(err => swal("No introduciste ningun Pokemon valido", `"${err}"`, "error"))
+}
+
+fetch (`https://pokeapi.co/api/v2/pokemon/`)
+    .then((res) =>res.json())
+        .then((data) => 
+        data.results.forEach((element) => {
+            poki(element.url)
+            }
+    ))
